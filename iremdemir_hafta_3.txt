@@ -1,0 +1,18 @@
+create table konser(
+konser_no int,
+tarih date,
+salon int);
+create table eser(
+eser_no int,
+eser_adi nchar,
+eser_türü nchar,
+besteci nchar);
+create table  muzisyen(
+muzisyen_no int,
+muzisyen_adi nchar,
+muzisyen_soyadi nchar);
+create table katilim(
+konser_no int,
+eser_no int,
+muzisyen_no int,
+görevi int);

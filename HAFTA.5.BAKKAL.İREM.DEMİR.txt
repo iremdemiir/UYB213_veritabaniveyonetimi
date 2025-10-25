@@ -1,0 +1,168 @@
+Create database bakkal
+go
+use bakkal;
+go
+
+create table müsterilerr(
+müsteri_id int primary key,
+müsteri_ad varchar(40),
+müsteri_soyad varchar(40),
+müsteri_telefon int)
+
+create table satislarr(
+satis_id int primary key,
+tarih datetime,
+toplam_tutar int,
+gider_id int,
+müsteri_id int)
+
+create table kategorilerr(
+kategori_id int primary key,
+kategori_adi varchar(40))
+
+create table firmaa(
+firma_id int primary key,
+firma_adi varchar(40),
+alinan_urun_id int,
+tarih datetime);
+
+create table ürünlerr(
+urun_id int primary key,
+urun_adi varchar(40),
+kategori_id int,
+firma_id int,
+stok_adet int,
+alis_fiyat int,
+satis_fiyat int)
+
+create table urun_detayy(
+urun_id int, 
+urun_detay_id int primary key,
+satis_id int,
+adet int)
+
+create table giderlerr(
+gider_id int primary key,
+gider_tipi varchar(40),
+gider_tutari varchar(40),
+gider_tarihi datetime)
+
+create table satis_detayy(
+satis_id int,
+satis_detay_id int primary key,
+urun_id int,
+miktar int,
+birim_fiyat int,
+tutar int)
+
+
+
+
+use bakkal
+go
+insert into müsterilerr (müsteri_id,müsteri_ad,müsteri_soyad)
+values(1,'ala','nml');
+insert into müsterilerr (müsteri_id,müsteri_ad,müsteri_soyad)
+values(2,'byz','nmd');
+insert into müsterilerr (müsteri_id,müsteri_ad,müsteri_soyad)
+values(3,'irm','nmc');
+insert into müsterilerr (müsteri_id,müsteri_ad,müsteri_soyad)
+values(4,'crn','nma');
+insert into müsterilerr (müsteri_id,müsteri_ad,müsteri_soyad)
+values(5,'reyyo','nmx');
+
+
+use bakkal
+go
+insert into firmaa (firma_id,firma_adi,alinan_urun_id,tarih)
+values(1,'x','0101','10.10.2010');
+insert into firmaa (firma_id,firma_adi,alinan_urun_id,tarih)
+values(2,'y','0101','10.10.2010');
+insert into firmaa (firma_id,firma_adi,alinan_urun_id,tarih)
+values(3,'z','0101','10.10.2010');
+insert into firmaa (firma_id,firma_adi,alinan_urun_id,tarih)
+values(4,'q','0101','10.10.2010');
+insert into firmaa (firma_id,firma_adi,alinan_urun_id,tarih)
+values(5,'d','0101','10.10.2010');
+
+use bakkal
+go
+insert into urun_detayy (urun_id,urun_detay_id,satis_id,adet)
+values(11,'0106','0114','40');
+insert into urun_detayy (urun_id,urun_detay_id,satis_id,adet)
+values(12,'0107','0113','41');
+insert into urun_detayy (urun_id,urun_detay_id,satis_id,adet)
+values(14,'0108','0110','42');
+insert into urun_detayy (urun_id,urun_detay_id,satis_id,adet)
+values(18,'0109','0111','43');
+insert into urun_detayy (urun_id,urun_detay_id,satis_id,adet)
+values(12,'0100','0112','44');
+
+use bakkal
+go
+insert into satislarr (satis_id,tarih,toplam_tutar,gider_id,müsteri_id)
+values(11,'10.10.2010','1000','1','1');
+insert into satislarr (satis_id,tarih,toplam_tutar,gider_id,müsteri_id)
+values(12,'10.10.2010','1200','2','2');
+insert into satislarr (satis_id,tarih,toplam_tutar,gider_id,müsteri_id)
+values(13,'10.10.2010','1110','3','3');
+insert into satislarr (satis_id,tarih,toplam_tutar,gider_id,müsteri_id)
+values(14,'10.10.2010','1230','4','4');
+insert into satislarr (satis_id,tarih,toplam_tutar,gider_id,müsteri_id)
+values(15,'10.10.2010','2100','5','5');
+
+use bakkal
+go
+insert into giderlerr (gider_id,gider_tipi,gider_tutari,gider_tarihi)
+values(1,'kira','0101','10.10.2010');
+insert into giderlerr (gider_id,gider_tipi,gider_tutari,gider_tarihi)
+values(2,'sugideri','0102','10.10.2010');
+insert into giderlerr (gider_id,gider_tipi,gider_tutari,gider_tarihi)
+values(3,'elektrikgideri','0103','10.10.2010');
+insert into giderlerr (gider_id,gider_tipi,gider_tutari,gider_tarihi)
+values(4,'çalışangideri','0104','10.10.2010');
+insert into giderlerr (gider_id,gider_tipi,gider_tutari,gider_tarihi)
+values(5,'yemekgideri','0105','10.10.2010');
+
+use bakkal
+go
+insert into satis_detayy (satis_id,satis_detay_id,urun_id,miktar,birim_fiyat,tutar)
+values(11,'0106','0103','40','220','600');
+insert into satis_detayy (satis_id,satis_detay_id,urun_id,miktar,birim_fiyat,tutar)
+values(12,'0105','0113','30','230','590');
+insert into satis_detayy (satis_id,satis_detay_id,urun_id,miktar,birim_fiyat,tutar)
+values(13,'0104','0133','10','200','800');
+insert into satis_detayy (satis_id,satis_detay_id,urun_id,miktar,birim_fiyat,tutar)
+values(14,'0182','0153','30','290','580');
+insert into satis_detayy (satis_id,satis_detay_id,urun_id,miktar,birim_fiyat,tutar)
+values(15,'0192','0123','11','203','510');
+
+insert into kategorilerr (kategori_id,kategori_adi)
+values(20,'yx');
+insert into kategorilerr (kategori_id,kategori_adi)
+values(30,'zx');
+insert into kategorilerr (kategori_id,kategori_adi)
+values(40,'dx');
+insert into kategorilerr (kategori_id,kategori_adi)
+values(50,'ax');
+
+use bakkal
+go
+insert into ürünlerr (urun_id,urun_adi,kategori_id,firma_id,stok_adet,alis_fiyat,satis_fiyat)
+values(11,'muz','20','1','10','200','500');
+insert into ürünlerr (urun_id,urun_adi,kategori_id,firma_id,stok_adet,alis_fiyat,satis_fiyat)
+values(12,'elma','30','2','20','500','560');
+insert into ürünlerr (urun_id,urun_adi,kategori_id,firma_id,stok_adet,alis_fiyat,satis_fiyat)
+values(14,'çikolata','40','3','11','600','800');
+insert into ürünlerr (urun_id,urun_adi,kategori_id,firma_id,stok_adet,alis_fiyat,satis_fiyat)
+values(18,'şeker','50','4','25','150','200');
+insert into ürünlerr (urun_id,urun_adi,kategori_id,firma_id,stok_adet,alis_fiyat,satis_fiyat)
+values(12,'dondurma','60','5','19','101','202');
+
+use bakkal;
+go
+select*from kategorilerr
+update kategorilerr
+set kategori_id = '20' , kategori_adi = 'yx'
+where kategori_id = NULL;
+delete from kategorilerr where kategori_id = NULL ;
